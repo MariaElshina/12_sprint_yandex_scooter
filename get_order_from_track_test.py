@@ -4,7 +4,7 @@ import data
 
 
 # Подтверждаем успешное получение заказа по номеру
-def positive_assert():
+def successful_confirm_order():
     response_new_order = sender_stand_request.create_new_order(data.order_body)
     track = response_new_order.json()['track']
     return sender_stand_request.get_information_order(track).status_code
@@ -12,4 +12,4 @@ def positive_assert():
 
 #  Проверяем, что статус код = 200
 def test_get_order_from_track():
-    assert positive_assert() == 200
+    assert successful_confirm_order() == 200
